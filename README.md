@@ -705,6 +705,7 @@ Your support motivates further development!
 ## 🚀 Built with ❤️ using the MERN Stack
 
 ### 💼 JobStack — Empowering Careers. Simplifying Hiring.
+### https://jobstackfrontend-m206nia4d-nasim-ahmed-kazis-projects.vercel.app/
 
 </p>
 
