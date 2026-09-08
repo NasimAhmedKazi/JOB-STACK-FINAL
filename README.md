@@ -653,7 +653,7 @@ Add screenshots/GIFs of the following sections to showcase the application:
 
 ### 📸 Application Preview
 
-![JobStack Landing Page](./screenshots/home.png)
+![JobStack Landing Page](https://jobstackfrontend-m206nia4d-nasim-ahmed-kazis-projects.vercel.app/)
 
 ![Job Search](./screenshots/jobs.png)
 
