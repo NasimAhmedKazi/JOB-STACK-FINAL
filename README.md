@@ -4,6 +4,7 @@
   <b>🚀 Empowering Careers. Simplifying Hiring.</b>
 </p>
 
+
 <p align="center">
   A modern, secure and scalable MERN-based job portal connecting job seekers with recruiters.
 </p>
@@ -472,11 +473,15 @@ Create a `.env` file inside the `backend` directory:
 
 `JWT_SECRET=your_jwt_secret`
 
+`CORS_ORIGINS=https://your-frontend.example`
+
+Set `CORS_ORIGINS` to the comma-separated browser origins allowed to call the API. The default allows the local Vite origins on ports 5173 and 5174. Set `MONGO_URI` and `JWT_SECRET` in the backend hosting provider's environment settings; the server will not start until these are present and MongoDB connects successfully. For uploads, also configure `CLOUDINARY_NAME`, `CLOUDINARY_API_KEY`, and `CLOUDINARY_SECRET_KEY`; email features use `BREVO_API_KEY` and `EMAIL_USER`. The backend listens on the hosting provider's `PORT` value, or port 5000 when it is not set.
+
 > ⚠️ Never commit `.env` files, database credentials or API secrets to GitHub.
 
 ## 4️⃣ Start the Backend
 
-`npm run dev`
+Use `npm run dev` for local development or `npm start` to run the production server.
 
 Backend:
 
@@ -708,4 +713,3 @@ Your support motivates further development!
 ### https://jobstackfrontend-m206nia4d-nasim-ahmed-kazis-projects.vercel.app/
 
 </p>
-

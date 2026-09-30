@@ -1,47 +1,24 @@
-import express from "express";
-import 'dotenv/config'
 import { connectDB } from "./config/db.js";
+import app from "./app.js";
+import { once } from "node:events";
 
-import cors from "cors";
-import authRouter from "./routes/auth.routes.js";
-import userRouter from "./routes/user.routes.js";
-import companyRouter from "./routes/company.routes.js";
-import jobRouter from "./routes/job.routes.js";
-import interviewRouter from "./routes/interview.routes.js";
-import applicationRouter from "./routes/application.routes.js";
-import savedRouter from "./routes/saved.routes.js";
-import inquiryRouter from "./routes/inquiry.routes.js";
+const port = Number(process.env.PORT || 5000);
 
-const PORT = process.env.PORT || 8000;
-const app = express();
+const startServer = async () => {
+  try {
+    if (!process.env.JWT_SECRET) {
+      throw new Error("JWT_SECRET environment variable is required");
+    }
 
-connectDB();
-//middleware
-app.use(express.json());
+    await connectDB();
 
-app.use(
-  cors({
-    origin: ["http://localhost:5173", "http://localhost:5174"],
-    credentials: true,
-  })
-);
-app.use("/uploads", express.static("uploads"));
+    const server = app.listen(port, "0.0.0.0");
+    await once(server, "listening");
+    console.log(`Server started on port ${port}`);
+  } catch (error) {
+    console.error("Failed to start API server:", error);
+    process.exitCode = 1;
+  }
+};
 
-//routes
-app.use("/api/auth", authRouter);
-app.use("/api/user", userRouter);
-app.use("/api/company", companyRouter);
-app.use("/api/job", jobRouter);
-app.use("/api/interview", interviewRouter);
-app.use("/api/application", applicationRouter);
-app.use("/api/saved", savedRouter);
-app.use("/api/inquiry", inquiryRouter);
-
-//test route
-app.get("/", (req, res) => {
-  res.send("API is running...");
-});
-
-app.listen(PORT, () => {
-  console.log(`Server Started on http://localhost:${PORT}`);
-});
+await startServer();
