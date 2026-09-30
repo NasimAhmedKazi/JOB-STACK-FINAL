@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://jobstackbackend-ab4omnb03-nasim-ahmed-kazis-projects.vercel.app/api/:path*"
+    },
+    {
+      "source": "/uploads/:path*",
+      "destination": "https://jobstackbackend-ab4omnb03-nasim-ahmed-kazis-projects.vercel.app/uploads/:path*"
+    }
+  ]
+}

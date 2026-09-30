@@ -477,6 +477,8 @@ Create a `.env` file inside the `backend` directory:
 
 Set `CORS_ORIGINS` to the comma-separated browser origins allowed to call the API. The default allows the local Vite origins on ports 5173 and 5174. Set `MONGO_URI` and `JWT_SECRET` in the backend hosting provider's environment settings; the server will not start until these are present and MongoDB connects successfully. For uploads, also configure `CLOUDINARY_NAME`, `CLOUDINARY_API_KEY`, and `CLOUDINARY_SECRET_KEY`; email features use `BREVO_API_KEY` and `EMAIL_USER`. The backend listens on the hosting provider's `PORT` value, or port 5000 when it is not set.
 
+The user frontend sends API and upload requests to same-origin `/api` and `/uploads` paths. Vite proxies these paths to the local backend during development; `frontend/vercel.json` rewrites them to the existing Vercel backend deployment. Keep that rewrite destination current when the backend production deployment changes, and ensure backend deployment protection permits server-side rewrite requests.
+
 > ⚠️ Never commit `.env` files, database credentials or API secrets to GitHub.
 
 ## 4️⃣ Start the Backend
